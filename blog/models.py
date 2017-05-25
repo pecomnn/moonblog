@@ -2,9 +2,10 @@ from django.db import models
 from django.utils import timezone as tz
 
 class Post(models.Model):
-    author         = models.ForeignKey('authUser')
-    title          = models.CharField(max_lenght = 200)
+    author         = models.ForeignKey('auth.User')
+    title          = models.CharField(max_length = 200)
     text           = models.TextField()
+    source = models.CharField(max_length=200, blank=True, null=True)
     created_date   = models.DateTimeField(default = tz.now)
     published_date = models.DateTimeField(blank = True, null = True)
 
